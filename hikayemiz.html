@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💖 Damla & Uygar - Bir Bahar Hikayesi 💖</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #e91e63;
+            --secondary-color: #c2185b;
+            --text-color: #ffcdd2;
+            --bg-gradient: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+            background: var(--bg-gradient);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .story-container {
+            background-color: rgba(0, 0, 0, 0.65);
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 800px;
+            width: 90%;
+            margin: 20px;
+            z-index: 10;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: var(--text-color);
+            font-size: clamp(2em, 8vw, 3em);
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .story-content {
+            text-align: left;
+            line-height: 1.8;
+            font-size: 1.1em;
+            padding: 0 20px;
+        }
+
+        .story-content p {
+            margin-bottom: 25px;
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid var(--primary-color);
+        }
+
+        .highlight {
+            color: var(--text-color);
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .heart {
+            font-size: 1.5em;
+            color: var(--primary-color);
+            animation: pulse 1.5s infinite;
+            display: inline-block;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .floating-heart {
+            position: absolute;
+            font-size: 20px;
+            color: var(--primary-color);
+            animation: float linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .back-btn {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(233, 30, 99, 0.5);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .back-btn:hover {
+            background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(233, 30, 99, 0.6);
+        }
+
+        .chapter-marker {
+            font-family: 'Pacifico', cursive;
+            color: var(--text-color);
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            text-align: center;
+            border-bottom: 2px dashed var(--primary-color);
+            padding-bottom: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .story-container {
+                padding: 20px;
+            }
+            
+            .story-content {
+                font-size: 1em;
+                padding: 0 10px;
+            }
+            
+            .chapter-marker {
+                font-size: 1.3em;
+            }
+        }
+
+        .music-section {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 30px 0;
+            text-align: center;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+
+        .music-section h2 {
+            color: #ffcdd2;
+            font-family: 'Pacifico', cursive;
+            margin-bottom: 15px;
+        }
+
+        .music-section audio {
+            width: 90%;
+            max-width: 600px;
+            margin: 10px 0;
+        }
+
+        .lyrics {
+            margin-top: 15px;
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts" id="floatingHearts"></div>
+    
+    <div class="story-container">
+        <h1> Damla & Uygar <span class="heart">❤</span><br>Bir Bahar Sınavında Başlayan Hikaye</h1>
+        
+        <div class="story-content">
+            <p style="font-style: italic; color: #ffd1dc; margin-top: -20px; text-align: center;">"Bazı hikayeler sınav salonlarında başlar, kalplerde büyür..."</p>
+
+            <div class="chapter-marker">Bölüm 1: İlk Bakış</div>
+            
+            <p>Ankara Üniversitesi'nin taş avluları, güz dönemi vizeleriyle dolup taşarken kampüs, öğrencilerin sessiz telaşıyla uğulduyordu. Uygar, o sabah sınava girmek için erkenden amfinin önüne gelmişti.</p>
+            
+            <p>Sınav salonuna öğrenciler sırayla alınıyordu. Uygar, ortalarda bir sırada bekliyordu. Kendi halinde dururken içeri giren ikiz kızlar dikkatini çekti. <span class="highlight">Siyah saçları omuzlarına dökülüyordu. Yaklaşık 160 cm boylarındalardı, hafif balık etli bir görünümleri vardı. Sade ama etkileyici bir hava taşıyorlardı. </span>Göz göze gelmediler, ama o birkaç saniyelik an Uygar'ın zihnine kazındı.</p>
+            
+            <p>O an, sınavın değil başka bir şeyin başladığını hissetti. İsmini duymamıştı ama onu bulacağına çok emindi. Sınav boyunca dikkatini toplamakta zorlandı; göz ucuyla onu aradı ama sonunda kendi kağıdına dönmek zorunda kaldı.</p>
+
+            <div class="chapter-marker">Bölüm 2: Bir Mesajın Hikâyesi</div>
+            
+            <p>Sınavdan sonra çıkışta göremedi onu. Ama aklında kalan güzel yüzü, onu içten içe meraklandırmaya devam etti. O akşam biraz araştırma yaptı. Hesabını bulup profiline girdiğinde, emin oldu: oydu.</p>
+            
+            <p>Birkaç saat kararsız kaldı. Mesaj yazıp silmek arasında gidip geldi. Sonra cesaretini topladı:</p>
+            
+            <p style="text-align: center; font-style: italic; background: rgba(233, 30, 99, 0.2); padding: 15px; border-radius: 10px;">
+                <span class="highlight">"Merhaba sınavın nasıl geçti :)"</span>
+            </p>
+            
+            <p>Damla, bu mesajı aldığında önce şaşırdı. Ama mesajda kaba bir yaklaşım yoktu. Üstelik nazik ve doğaldı. Merakı ağır bastı ve cevap verdi:</p>
+            
+            <p style="text-align: center; font-style: italic; background: rgba(233, 30, 99, 0.2); padding: 15px; border-radius: 10px;">
+                <span class="highlight">"Sen kimsin?"</span>
+            </p>
+
+            <div class="chapter-marker">Bölüm 3: Sohbetler </div>
+            
+            <p>Günler içinde mesajlar derinleşti. Dersler, müzikler, Ankara'nın gri havası, üniversite anıları... </p>
+            <p>Konular birbiri ardına aktı. Başlangıçta birbirlerine kim olduklarını anlatmakla başladılar; nereli olduklarını, ne okumak istediklerini, hangi filmleri sevdiklerini konuştular. Her soru yeni bir cevaba, her cevap yeni bir meraka dönüşüyordu.</p>
+            <p>Sohbetler kısa sürede günlük bir alışkanlığa dönüştü. Sabah "günaydın"la başlayıp gece "iyi geceler"le biten bir bağ oluşmuştu artık. Sürekli mesajlaşıyor, bazen videolar atıyor, bazen birlikte aynı şarkıyı dinliyorlardı.</p>
+            <p>Derken bir gün, ikisinin de kalbinde aynı hissi uyandıran bir şarkı ortaya çıktı. O şarkı artık onların ortak diliydi; ne zaman dinleseler birbirlerini hatırlıyorlardı. İşte o andan itibaren, bu sadece bir sohbet değildi. Bu, birlikte yazılan bir hikâyeye dönüşüyordu.</p>
+                <div class="music-section">
+    <h2>...İşte o şarkı ve sözleri... </h2>
+    <audio controls>
+        <source src="muzik1.mp4" type="audio/mpeg">
+        Tarayıcınız audio öğesini desteklemiyor.
+    </audio>
+    <div class="lyrics">
+             <p>Daimidir sürgünüm <br>
+                Hasret benim ocağım <br>
+                Gurbet benim evimdir</p>
+             <p>
+                Yok bana bu cihanda bir yer<br>
+                Bana bu cihanda bir yer<br>
+                Bana bu cihanda yoktur aman<br>
+                Yok bana bu cihanda bir yer<br>
+                Bana bu cihanda bir yer<br>
+                Şu koca cihanda yoktur aman<br>
+             </p>
+
+    </div>
+     <audio controls>
+        <source src="muzik2.mp4" type="audio/mpeg">
+        Tarayıcınız audio öğesini desteklemiyor.
+    </audio>
+    <div class="lyrics">
+             <p>
+                Deva değil dert oldum <br>
+                Gül değil diken oldum<br>
+                Canan iken el oldum<br>
+             </p>
+             
+             <p>
+                Yok bana bu cihanda bir yâr<br>
+                Bana bu cihanda bir yâr<br>
+                Bana bu cihanda yoktur aman<br>
+                Yok bana bu cihanda bir yâr<br>
+                Bana bu cihanda bir yâr<br>
+                Şu koca cihanda yoktur aman<br>
+             </p>
+    </div>
+          
+    
+         <div class="chapter-marker">Bölüm 4: İlk Buluşma</div>
+            
+            
+            <p>İlk kez fakülte yerleşkesinde buluştular. Kuşlar çığlık çığlığa dolaşırken, sınavın başlamasına az bir süre kalmıştı. Uygar sınav salonuna girdiği anda Damla’yı gördü<span class="highlight"> Damla elindeki kalemi heyecanla sallıyor, bir yandan da saçlarıyla oynuyordu. Küçük ama içten bir tebessüm vardı yüzünde. </span> Uygar, onu izlerken Ankara'nın soğuğu değil, aralarındaki sıcaklık sarıyordu içini.</p>
+
+            
+            <p>İlk oturum sona ermişti. Koridorda kısa ama samimi bir sohbet ettiler. Sonra okul binasından çıktılar. Uygar, Damla'nın parfümünün kokusunu aldığı gibi içinde kelebekler uçuşmuştu âdeta. Dışarıda Damla'nın babası ve kardeşi onu bekliyordu. Orada yolları kısa süreliğine ayrıldı.</p>
+            <p>Öğleden sonra ikinci oturum için tekrar kampüste buluştular. Bu sefer Damla'nın ikiz kardeşiyle de tanıştı Uygar. Birbirlerine ısınmaları uzun sürmedi. Yeniden sınav salonuna girdiklerinde, yine aynı sınıftaydılar. Sınav bittiğinde kısa bir konuşma daha geçti aralarında. Damla, babasının yanına döndü ve Ankara'da kalacakları yere geçtiler.</p>
+            <p>Pazar günü bir sınav daha vardı. Uygar o sabah da erkenden okul bahçesine gitmişti. Ve oradaydı Damla... Bu sefer giydiği kıyafet Uygar’ın dikkatinden kaçmamıştı — sade ama çok güzeldi. O sabah da kısacık ama özel bir sohbet ettiler. Sanki biri özellikle ayarlamış gibiydi, aynı sınıfta ve sıraları yan yanaydı. </p>
+            <p>Pazar sabah oturumu da bitmişti. Vedalaşma vakti gelmişti. Damla memleketine dönecekti. Şimdi geriye sadece final haftasını beklemek kalmıştı.</p>
+
+
+            <div class="chapter-marker">Bölüm 5: Kavuşmalar</div>
+          
+            <p>Artık finalleri bekliyorlardı. Zaman, ders çalışarak geçiyor ama her sayfa arasında akıllar hep birbirindeydi. Günlük mesajlaşmalar yeterli gelmemeye başlamıştı. Her akşam, derslerden sonra mutlaka sesli konuşuyorlardı. Konular uzayıp gidiyordu; gelecek planları, iş hayatı, çocukluk anıları, rüyalar, komik olaylar, spordan siyasete kadar her şey konuşuluyordu.</p>
+            <p>Damla’nın sesi Uygar için başka bir huzur demekti. Her kelimesi, onun içindeki bir boşluğu dolduruyor gibiydi. Sanki yalnızca konuşmak değil, birbirini duymak da başlı başına bir teselliydi.</p>
+            <p>Damla, açıköğretim öğrencisiydi ve memleketinde yaşıyordu. Ankara’ya sadece sınavlar için geliyordu. Her gelişinde Uygar'la buluşmak istese de zaman her zaman yetmiyordu. Ama birlikte geçirdikleri anları kıymetli kılıyor, her dakikayı dolu dolu yaşıyorlardı.</p>
+            <p>Bir sonraki geliş tarihi belli olmuştu: Haziran ortası. O gün yaklaştıkça heyecan artıyor, mesajlarda geri sayım başlamıştı bile. Kavuşmalar belki sık değildi ama artık daha anlamlıydı. Görüşemedikleri günlerde bile birbirlerini düşünmek, aralarındaki bağı diri tutuyordu.</p>
+
+            
+            <p style="text-align: center; font-style: italic; background: rgba(233, 30, 99, 0.2); padding: 15px; border-radius: 10px;">
+                <span class="highlight">"Seni yeniden görmek için gün sayıyorum,"</span> yazdı Uygar.<br><br>
+                <span class="highlight">"Ben de... Ankara'ya adım atar atmaz seni arayacağım,"</span> dedi Damla.
+            </p>
+
+                     <div class="chapter-marker">Bölüm 6: Bekleyiş</div>
+                    <p> <strong>1 Haziran.</strong> <br>
+                        Yaz artık kendini göstermişti ama Uygar’ın içindeki mevsim hâlâ o bahar sabahında kalmıştı. Damla’yla geçirdikleri sınav günlerinin üzerinden biraz zaman geçmişti ama her şey dün gibi tazeydi. Her sabah mesajla başlıyor, her gece “iyi geceler”le biten sohbetleri hâlâ sürüyordu. Ama artık bir geri sayım vardı.</p>
+                        <p> <strong>14 Haziran</strong><br>
+                        
+                        O tarih, takvimin üstünde kırmızı kalemle işaretlenmiş gibiydi.
+                        Uygar, her geçen gün biraz daha heyecanlanıyor, akşamları onu düşünmeden uyuyamıyordu. Ders notlarının kenarına bile bazen fark etmeden Damla'nın adını karalıyordu.</p>
+                        <p>Damla da aynı şekilde hissediyordu. Mesajlarında “çok az kaldı” demeye başlamıştı.
+                        “Ankara’ya adım attığımda ilk seni arayacağım,” yazmıştı bir gece.
+                        Uygar, o mesajı defalarca okudu.</p>
+                        <p>Şimdi günler, sabırla ve umutla geçiyordu.
+                        Ders çalışırken bile aklında hep aynı düşünce vardı:
+                        <strong>“Az kaldı…”</strong> </p>
+                        <p>Bazen birlikte dinledikleri o şarkıyı açıyor, gözlerini kapatıp onun sesini hayal ediyordu. Her mısra, aralarındaki bağı biraz daha güçlendiriyordu.
+                         Sınavlar yaklaşırken, asıl heyecan onunla yeniden karşılaşmak için duyuluyordu.</p>
+                         <p><strong>Bu hikâye henüz bitmedi.
+                        14 Haziran geldiğinde…
+                        Bir başka sayfa açılacak: Belki yeni bir bölüm, belki gerçek bir başlangıç.</strong></p>
+                        <p>O gün ne kadar yakınsa, her şey o kadar belirsiz. Ve şimdi, her şeyin bir hatıra olduğu bu noktada, onu hatırlatacak bir şarkı ile hikayeye veda etmek istiyorum.</p>
+            </div>
+            <div class="music-section">
+    <h2>...Ve son şarkı... </h2>
+    <audio controls>
+        <source src="muzik3.mp4" type="audio/mpeg">
+        Tarayıcınız audio öğesini desteklemiyor.
+    </audio>
+    <div class="lyrics">
+             <p>Vedalardan bir buket al <br>
+                Onun ol onu sev <br>
+                Beni hayat bile sevmedi be<br>
+                Boğuluyordum görmediler</p>
+                
+                
+                <p>
+                    Ona aldanıp <br>
+                    Geceye sarılırsan <br>
+                    Gündüze ziyan olur <br>
+                    Güneş söner kahrından <br>
+                    Sönsün varsın <br>
+                    Canımı yakamazsın <br>
+                    Gün gelir bir şarkıda <br>
+                    Yine beni hatırlarsın <br>
+
+                    </p>
+                    <p>
+                    Vedalardan bi buket al <br>
+                    Onun ol onu sev <br>
+                    Beni hayat bile sevmedi be <br>
+                    Boğuluyordum görmediler <br>
+                </p>
+
+    </div>
+        </div>
+        
+        <a href="index.html" class="back-btn">Ana Sayfaya Dön</a>
+    </div>
+
+    <script>
+        // Uçan kalpler animasyonu
+        function createHearts() {
+            const floatingHearts = document.getElementById('floatingHearts');
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'floating-heart';
+                    heart.innerHTML = '❤';
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+                    floatingHearts.appendChild(heart);
+                    
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 5000);
+                }, i * 200);
+            }
+        }
+
+        // Sayfa yüklendiğinde kalpleri oluştur
+        window.addEventListener('DOMContentLoaded', () => {
+            createHearts();
+            setInterval(createHearts, 3000);
+        });
+    </script>
+</body>
+</html>
