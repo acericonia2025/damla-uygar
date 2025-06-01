@@ -213,42 +213,38 @@
             }
         }
 
-       .photo-slider {
-    width: 100%;
-    max-width: 390px;
-    aspect-ratio: 2 / 1;
-    border-radius: 25%;
-    border: 5px solid white;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    margin-bottom: 20px;
-    transition: all 0.3s ease;
-    position: relative;
-}
+        .photo-slider {
+            width: 390px;
+            height: 190px;
+            border-radius: 25%;
+            border: 5px solid white;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        #uygar{
+            width: 390px;
+            height: 290px;
+            
+        }
 
-#uygar {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+        .photo-slider:hover {
+            transform: rotate(5deg) scale(1.05);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+        }
 
-.photo-slider img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    transition: opacity 1s ease;
-}
-
-@media (max-width: 600px) {
-    .photo-slider {
-        max-width: 90%;
-        aspect-ratio: 1 / 1;
-    }
-}
+        .photo-slider img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
 
         .photo-slider img.active {
             opacity: 1;
