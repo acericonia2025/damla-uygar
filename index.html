@@ -207,23 +207,23 @@
             <div class="progress-bar"></div>
         </div>
         
-        <p>Sitemiz şu anda bakım aşamasındadır. Yakında daha güzel bir şekilde geri döneceğiz.</p>
+        <p>Sitemiz şu anda bakım aşamasındadır. <span id="opening-time"></span> daha güzel bir şekilde geri döneceğiz.</p>
         
         <div class="countdown">
             <div class="countdown-item">
-                <div class="countdown-number" id="days">0</div>
+                <div class="countdown-number" id="days">00</div>
                 <div class="countdown-label">Gün</div>
             </div>
             <div class="countdown-item">
-                <div class="countdown-number" id="hours">5</div>
+                <div class="countdown-number" id="hours">00</div>
                 <div class="countdown-label">Saat</div>
             </div>
             <div class="countdown-item">
-                <div class="countdown-number" id="minutes">45</div>
+                <div class="countdown-number" id="minutes">00</div>
                 <div class="countdown-label">Dakika</div>
             </div>
             <div class="countdown-item">
-                <div class="countdown-number" id="seconds">22</div>
+                <div class="countdown-number" id="seconds">00</div>
                 <div class="countdown-label">Saniye</div>
             </div>
         </div>
@@ -257,47 +257,69 @@
             }
         }
 
-       // Geri sayım animasyonu
-let countdownEndTime;
+        // Sabit bir bitiş zamanı belirle (bugün saat 22:00)
+        function getTargetTime() {
+            const now = new Date();
+            const target = new Date();
+            
+            // Eğer şu anki saat 22:00'den önceyse, bugün 22:00'i hedefle
+            if (now.getHours() < 22 || (now.getHours() === 22 && now.getMinutes() === 0)) {
+                target.setHours(22, 0, 0, 0);
+            } else {
+                // Değilse yarın 22:00'i hedefle
+                target.setDate(target.getDate() + 1);
+                target.setHours(22, 0, 0, 0);
+            }
+            
+            return target;
+        }
 
-function startCountdown(durationInHours) {
-    const now = new Date();
-    countdownEndTime = new Date(now.getTime() + durationInHours * 60 * 60 * 1000);
-    updateCountdown();
-}
+        // Açılış zamanını gösteren metni güncelle
+        function updateOpeningTime(target) {
+            const options = { hour: '2-digit', minute: '2-digit' };
+            const timeString = target.toLocaleTimeString('tr-TR', options);
+            document.getElementById('opening-time').textContent = timeString + "'de";
+        }
 
-function updateCountdown() {
-    const now = new Date();
-    const diff = countdownEndTime - now;
+        // Geri sayımı güncelle
+        function updateCountdown() {
+            const now = new Date();
+            const target = getTargetTime();
+            const diff = target - now;
 
-    if (diff <= 0) {
-        document.getElementById('days').textContent = "00";
-        document.getElementById('hours').textContent = "00";
-        document.getElementById('minutes').textContent = "00";
-        document.getElementById('seconds').textContent = "00";
-        return;
-    }
+            // Eğer geri sayım bittiyse
+            if (diff <= 0) {
+                document.getElementById('days').textContent = "00";
+                document.getElementById('hours').textContent = "00";
+                document.getElementById('minutes').textContent = "00";
+                document.getElementById('seconds').textContent = "00";
+                
+                // Burada siteyi otomatik yönlendirebilirsiniz
+                // window.location.href = "ana-sayfa.html";
+                return;
+            }
 
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-    document.getElementById('days').textContent = days.toString().padStart(2, '0');
-    document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-    document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-    document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-}
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
 
-// Sayfa yüklendiğinde animasyonları başlat
-window.addEventListener('DOMContentLoaded', () => {
-    createHearts();
-    setInterval(createHearts, 3000);
+        // Sayfa yüklendiğinde animasyonları başlat
+        window.addEventListener('DOMContentLoaded', () => {
+            createHearts();
+            setInterval(createHearts, 3000);
 
-    startCountdown(5); // 5 saatlik geri sayım
-    setInterval(updateCountdown, 1000);
-});
-
+            const targetTime = getTargetTime();
+            updateOpeningTime(targetTime);
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        });
     </script>
 </body>
 </html>
