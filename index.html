@@ -257,35 +257,47 @@
             }
         }
 
-        // Geri sayım animasyonu
-        function updateCountdown() {
-            // Örnek bir tarih - gerçekte bakımın biteceği tarihle değiştirin
-            const targetDate = new Date();
-            targetDate.setDate(targetDate.getDate() + 0);
-            targetDate.setHours(targetDate.getHours() + 5);
-            
-            const now = new Date();
-            const diff = targetDate - now;
-            
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-            
-            document.getElementById('days').textContent = days.toString().padStart(2, '0');
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-        }
+       // Geri sayım animasyonu
+let countdownEndTime;
 
-        // Sayfa yüklendiğinde animasyonları başlat
-        window.addEventListener('DOMContentLoaded', () => {
-            createHearts();
-            setInterval(createHearts, 3000);
-            
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
-        });
+function startCountdown(durationInHours) {
+    const now = new Date();
+    countdownEndTime = new Date(now.getTime() + durationInHours * 60 * 60 * 1000);
+    updateCountdown();
+}
+
+function updateCountdown() {
+    const now = new Date();
+    const diff = countdownEndTime - now;
+
+    if (diff <= 0) {
+        document.getElementById('days').textContent = "00";
+        document.getElementById('hours').textContent = "00";
+        document.getElementById('minutes').textContent = "00";
+        document.getElementById('seconds').textContent = "00";
+        return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    document.getElementById('days').textContent = days.toString().padStart(2, '0');
+    document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+    document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+    document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+}
+
+// Sayfa yüklendiğinde animasyonları başlat
+window.addEventListener('DOMContentLoaded', () => {
+    createHearts();
+    setInterval(createHearts, 3000);
+
+    startCountdown(5); // 5 saatlik geri sayım
+    setInterval(updateCountdown, 1000);
+});
+
     </script>
 </body>
 </html>
