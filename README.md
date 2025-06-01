@@ -1,2 +1,0 @@
-# damla-uygar
-damla-uygar
